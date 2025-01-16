@@ -62,7 +62,7 @@ def response(input):
     | llm
     | StrOutputParser()
     )
-    return chain.invoke({"input": input})
+    return chain.stream({"input": input})
 
 def format_docs(docs: List[Document]) -> str:
     return "\n".join([x.page_content for x in docs])

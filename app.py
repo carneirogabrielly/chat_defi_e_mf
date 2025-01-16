@@ -23,9 +23,11 @@ if prompt := st.chat_input("What is up?"):
         st.markdown(prompt)
         
         
-    chat_response = response(prompt)
-    st.session_state.messages.append({"role": "assistant", "content": chat_response})
+    # chat_response = response(prompt)
+    # st.session_state.messages.append({"role": "assistant", "content": chat_response})
     
     # Display user message in chat message container
     with st.chat_message("assistant"):
-        st.markdown(chat_response)
+        chat_response = st.write_stream(response(prompt)) 
+        # st.markdown(chat_response)
+    st.session_state.messages.append({"role": "assistant", "content": chat_response})
